@@ -1,23 +1,23 @@
 package com.example.wyapplication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.example.common.BaseActivity
 import com.example.wyapplication.databinding.ActivityMainBinding
 
-class WyMainActivity : AppCompatActivity() {
+class WyMainActivity : BaseActivity<ActivityMainBinding>() {
+
+    override val layoutId: Int
+        get() = R.layout.activity_main
 
     private lateinit var navController: NavController
-    private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         initNav()
     }
 
@@ -27,4 +27,6 @@ class WyMainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.btNavWy, navController)
     }
+
+
 }
